@@ -5,7 +5,7 @@ description = "MS-DRG viewer"
 authors = [{ name = "Jackson Porter", email = "jackson@jacksonporterjp.com" }]
 readme = "README.md"
 requires-python = ">=3.11, <4"
-dependencies = ["loguru (>=0.7.3,<0.8.0)", "fastapi[standard] (>=0.116.1,<0.117.0)", "click (>=8.2.1,<9.0.0)", "uvicorn[standard] (>=0.35.0,<0.36.0)", "sqlmodel (>=0.0.24,<0.0.25)", "psycopg[binary] (>=3.2.9,<4.0.0)"]
+dependencies = ["loguru (>=0.7.3,<0.8.0)", "fastapi[standard] (>=0.116.1,<0.117.0)", "click (>=8.2.1,<9.0.0)", "uvicorn[standard] (>=0.35.0,<0.36.0)", "sqlmodel (>=0.0.24,<0.0.25)", "psycopg[binary] (>=3.2.9,<4.0.0)", "pydantic (>=2.11.7,<3.0.0)", "alembic (>=1.16.4,<2.0.0)"]
 packages = [
     { include = "healthcare_cost_navigator" },
     { include = "hcn_scripts" }
@@ -28,3 +28,7 @@ pre-commit = "^4.3.0"
 
 [tool.pylint.format]
 max-line-length = 100
+
+[tool.pylint]
+# Add ignored directories or files here
+ignore = ["migrations", "build", "dist"]

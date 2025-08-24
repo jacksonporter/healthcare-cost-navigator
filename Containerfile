@@ -37,4 +37,4 @@ USER hcn
 WORKDIR /home/hcn
 
 # Set the entrypoint
-ENTRYPOINT ["/usr/local/bin/hcn"]
+ENTRYPOINT ["/usr/local/bin/hcn", "api"]

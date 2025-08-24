@@ -17,3 +17,6 @@ run = ".venv/bin/python hcn_scripts/tasks/stop_db_container_in_background.py"
 
 [tasks.compose-clean]
 run = ".venv/bin/python hcn_scripts/tasks/compose_clean.py"
+
+[tasks.migrate]
+run = "poetry run alembic upgrade head"

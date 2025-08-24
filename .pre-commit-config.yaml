@@ -59,6 +59,7 @@ repos:
           - "pylint"
         language: system
         types: [python]
+        exclude: ^alembic/
 
       - id: hadolint
         name: hadolint
