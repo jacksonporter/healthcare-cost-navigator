@@ -1,0 +1,19 @@
+[tools]
+# hadolint = "latest"
+poetry = { version = "latest", pyproject = "{{ config_root }}/pyproject.toml" }
+python = "3.11"                                                                 # must be after poetry so the poetry bin is first in PATH
+
+[hooks]
+enter = ".venv/bin/python hcn_scripts/hooks/enter.py"
+
+[tasks.init]
+run = ".venv/bin/python hcn_scripts/tasks/init.py"
+
+[tasks.start-db]
+run = ".venv/bin/python hcn_scripts/tasks/start_db_container_in_background.py"
+
+[tasks.stop-db]
+run = ".venv/bin/python hcn_scripts/tasks/stop_db_container_in_background.py"
+
+[tasks.compose-clean]
+run = ".venv/bin/python hcn_scripts/tasks/compose_clean.py"

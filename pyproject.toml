@@ -1,0 +1,30 @@
+[project]
+name = "healthcare-cost-navigator"
+version = "0.0.1"
+description = "MS-DRG viewer"
+authors = [{ name = "Jackson Porter", email = "jackson@jacksonporterjp.com" }]
+readme = "README.md"
+requires-python = ">=3.11, <4"
+dependencies = ["loguru (>=0.7.3,<0.8.0)", "fastapi[standard] (>=0.116.1,<0.117.0)", "click (>=8.2.1,<9.0.0)", "uvicorn[standard] (>=0.35.0,<0.36.0)", "sqlmodel (>=0.0.24,<0.0.25)", "psycopg[binary] (>=3.2.9,<4.0.0)"]
+packages = [
+    { include = "healthcare_cost_navigator" },
+    { include = "hcn_scripts" }
+]
+
+[project.scripts]
+hcn = 'healthcare_cost_navigator.app:main'
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.3.8"
+flake8 = "^7.3.0"
+black = "^25.1.0"
+pytest = "^8.4.1"
+mypy = "^1.17.1"
+pre-commit = "^4.3.0"
+
+[tool.pylint.format]
+max-line-length = 100

@@ -1,0 +1,71 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: check-toml
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: mise
+        args:
+          - "exec"
+          - "--"
+          - "poetry"
+          - "run"
+          - "black"
+        language: system
+        types: [python]
+
+      - id: flake8
+        name: flake8
+        entry: mise
+        args:
+          - "exec"
+          - "--"
+          - "poetry"
+          - "run"
+          - "flake8"
+        language: system
+        types: [python]
+
+      - id: mypy
+        name: mypy
+        entry: mise
+        args:
+          - "exec"
+          - "--"
+          - "poetry"
+          - "run"
+          - "mypy"
+        language: system
+        types: [python]
+
+      - id: pylint
+        name: pylint
+        entry: mise
+        args:
+          - "exec"
+          - "--"
+          - "poetry"
+          - "run"
+          - "pylint"
+        language: system
+        types: [python]
+
+      - id: hadolint
+        name: hadolint
+        entry: mise
+        args:
+          - "exec"
+          - "--"
+          - "hadolint"
+        language: system
+        files: ^Containerfile$

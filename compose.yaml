@@ -1,0 +1,26 @@
+services:
+  hcn:
+    build:
+      context: .
+      dockerfile: Containerfile
+    ports:
+      - "8000:8000"
+    environment:
+      LOG_LEVEL: DEBUG
+      HOST: "0.0.0.0"
+      PORT: 8000
+      DATABASE_URL: postgresql+psycopg://${HCN_DB_USER:-hcn}:${HCN_DB_PASSWORD:-hcn}@${HCN_DB_HOST:-database}:${HCN_DB_PORT:-5432}/${HCN_DB_NAME:-hcn}
+
+  database:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${HCN_DB_USER:-hcn}
+      POSTGRES_PASSWORD: ${HCN_DB_PASSWORD:-hcn}
+      POSTGRES_DB: ${HCN_DB_NAME:-hcn}
+    ports:
+      - "54321:5432"
+    volumes:
+      - hcn_database_data:/var/lib/postgresql/data
+
+volumes:
+  hcn_database_data:
