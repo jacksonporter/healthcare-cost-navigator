@@ -61,7 +61,8 @@ def main(file: str, database_url: str) -> None:
             rows_processed = 0
             for row in reader:
                 try:
-                    print(f"Processing row #{rows_processed + 1}")
+                    if rows_processed % 1000 == 0:
+                        print(f"Processing row #{rows_processed + 1}")
                     row_lowercased_keys = {k.lower(): v for k, v in row.items() if v}
                     provider_and_service = ProviderAndService(**row_lowercased_keys)  # type: ignore
 

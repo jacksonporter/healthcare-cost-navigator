@@ -120,7 +120,7 @@ def main(
     app = create_app(database_url)
 
     if migrate:
-        subprocess.run(["alembic", "upgrade", "head"], check=True, shell=True)
+        subprocess.run(["./.venv/bin/alembic upgrade head"], check=True, shell=True)
 
     uvicorn.run(app, host=host, port=port)
 

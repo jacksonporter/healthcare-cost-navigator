@@ -34,7 +34,7 @@ RUN .venv/bin/poetry install --without=dev \
 
 USER hcn
 
-WORKDIR /home/hcn
+WORKDIR /usr/local/lib/hcn
 
 # Set the entrypoint
 ENTRYPOINT ["/usr/local/bin/hcn", "api"]
