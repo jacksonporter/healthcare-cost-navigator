@@ -25,5 +25,5 @@ podman compose down --volumes --rmi all
 If you wish to load the most recent ETL data (make sure you've setup your [Development Environment](./docs/development_environment.md)):
 
 ```shell
-mise run 'migrate'
+mise exec -- poetry run hcn etl --file <path to MUP CSV>
 ```
